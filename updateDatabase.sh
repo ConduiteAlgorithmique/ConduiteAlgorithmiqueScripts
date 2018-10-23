@@ -2,4 +2,4 @@
 
 git pull
 cp ./database/database.h5 /home/nuc/Documents/dataStore/database.h5
-python2 getHapVideoLengths.py
+python2 ./python/getHapVideoLengths.py

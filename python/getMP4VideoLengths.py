@@ -1,7 +1,7 @@
 from os.path import join
 import subprocess
 import h5py as h5
-from utils.defs import DATA_STORE, HAP_DIR, VIDEO_DIR
+from Utils.defs import DATA_STORE, HAP_DIR, VIDEO_DIR
 import numpy as np
 db_path = join(DATA_STORE, "database.h5")
 

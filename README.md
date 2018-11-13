@@ -9,4 +9,4 @@ Steps:
 2. run `compileOpenFrameworks.sh`
 ..* This runs the openframeworks setup scripts
 2. run `installConduiteAlgorithmique.sh`
-..* Compiles the COnduite Algorithmique project, adds it to /bin and creates a shortcut on the desktop
+..* Compiles the COnduite Algorithmique project, adds it to /bin and creates shortcuts on the desktop

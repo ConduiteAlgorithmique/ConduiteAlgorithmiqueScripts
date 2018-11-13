@@ -32,6 +32,6 @@ echo "sudo rtcwake -off no -l -t$(date +%s -d 'tomorrow 0:00' )" | sudo tee -a $
 echo "sudo rtcwake -m no -l -t$(date +%s -d 'tomorrow 9:00' )" | sudo tee -a $RC_LOCAL
 echo "sudo rm -f $STARTUP_LOG"| sudo tee -a $RC_LOCAL
 echo "sudo touch $STARTUP_LOG"| sudo tee -a $RC_LOCAL
-echo "$(route -n) >> $STARTUP_LOG"| sudo tee -a $RC_LOCAL
-echo "sudo $(rtcwake -m show) >> $STARTUP_LOG"| sudo tee -a $RC_LOCAL
+echo "route -n >> $STARTUP_LOG"| sudo tee -a $RC_LOCAL
+echo "sudo rtcwake -m show >> $STARTUP_LOG"| sudo tee -a $RC_LOCAL
 

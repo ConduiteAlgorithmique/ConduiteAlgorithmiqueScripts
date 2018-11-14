@@ -1,5 +1,21 @@
 #!/usr/bin/env bash
 
+
+SHORTCUT=~/Desktop/StartupShutdownSettings.desktop
+timefile=$PWD/startupShutdown
+
+#Todo make icon
+touch ${SHORTCUT}
+cat > ${SHORTCUT} << EOL
+[Desktop Entry]
+Name=Computer On/Off times
+Exec=bash -c 'gedit ${timefile}'
+Type=Application
+Terminal=false
+Icon=preferences-system
+EOL
+chmod u+x ${SHORTCUT}
+
 cd ../openFrameworks/apps/myApps/ConduiteAlgorithmique
 make
 
@@ -8,9 +24,6 @@ sudo rm /usr/bin/ConduiteAlgorithmique
 sudo ln -s ${conduite_exe} /usr/bin/ConduiteAlgorithmique
 
 SHORTCUT=~/Desktop/ConduiteAlgorithmique.desktop
-ICON=$PWD/icon.png
-
-#Todo make icon
 touch ${SHORTCUT}
 cat > ${SHORTCUT} << EOL
 [Desktop Entry]
@@ -21,6 +34,7 @@ Terminal=true
 Icon=utilities-terminal
 EOL
 chmod u+x ${SHORTCUT}
+cp $SHORTCUT ~/.config/autostart/
 
 SHORTCUT=~/Desktop/ConduiteAlgorithmique_Settings.desktop
 settingsfile=$PWD/bin/data/settings.json
@@ -35,3 +49,8 @@ Terminal=false
 Icon=preferences-system
 EOL
 chmod u+x ${SHORTCUT}
+
+
+
+
+

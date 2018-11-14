@@ -17,7 +17,7 @@ known_files = [
 
 
 def find_oversize(dir):
-    files = [file for file in os.listdir(dir) if file.endswith(".mp4")]
+    files = [file for file in os.listdir(dir) if file.endswith(".mov")]
     numfiles =len(files)
     filelist = []
     for i,file in enumerate(files):
@@ -53,7 +53,7 @@ def reencode_oversize(dir,files):
 
 
 if __name__ =="__main__":
-    VIDEO_DIR = "/home/nuc/Documents/dataStore/VIDEO"
+    VIDEO_DIR = "/home/nuc/Documents/dataStore/VIDEO/hap"
     files = find_oversize(VIDEO_DIR)
     print(files)
-    reencode_oversize(VIDEO_DIR,files)
+    # reencode_oversize(VIDEO_DIR,files)

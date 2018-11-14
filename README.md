@@ -8,5 +8,11 @@ Steps:
 ..* This downloads the custom openframeworks repo and submodules
 2. run `compileOpenFrameworks.sh`
 ..* This runs the openframeworks setup scripts
-2. run `installConduiteAlgorithmique.sh`
-..* Compiles the COnduite Algorithmique project, adds it to /bin and creates shortcuts on the desktop
+3. run `installConduiteAlgorithmique.sh`
+..* Compiles the Conduite Algorithmique project, adds it to /bin
+..* Creates shortcuts on the desktop
+..* Adds the application to startup programs 
+..** To remove from startup, remove the file in ~/.configure/autostart/)
+4. run `ConfigureStartup.sh`
+..* Adds commands that are run at startup to turn the computer on and off at specific times
+..* Gives wifi priority for internet access

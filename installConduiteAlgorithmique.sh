@@ -34,7 +34,7 @@ Terminal=true
 Icon=utilities-terminal
 EOL
 chmod u+x ${SHORTCUT}
-cp $SHORTCUT ~/.config/autostart/
+#cp $SHORTCUT ~/.config/autostart/
 
 SHORTCUT=~/Desktop/ConduiteAlgorithmique_Settings.desktop
 settingsfile=$PWD/bin/data/settings.json

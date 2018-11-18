@@ -27,7 +27,9 @@ fi
 #Create rc.local file (commands to run on startup)
 RC_LOCAL=/etc/rc.local
 STARTUP_LOG=/home/$USER/startup.log
-TIME_SETTINGS_FILE=$PWD/startupShutdown
+TMP_TIME=$PWD/startupShutdown
+TIME_SETTINGS_FILE=/home/$USER/startupShutdown
+cp $TMP_TIME $TIME_SETTINGS_FILE
 
 sudo rm -f $RC_LOCAL
 sudo touch $RC_LOCAL
@@ -36,8 +38,8 @@ echo 'sudo ifmetric wlp6s0 50' | sudo tee -a $RC_LOCAL
 
 #Read times from settings file
 echo "mapfile -t times < $TIME_SETTINGS_FILE" | sudo tee -a $RC_LOCAL
-echo "sudo rtcwake -m no -l -t \`date +%s -d \"tomorrow \${times[0]}\"\`" | sudo tee -a $RC_LOCAL
-echo "sudo shutdown -h \${times[1]}" | sudo tee -a $RC_LOCAL
+#echo "sudo rtcwake -m no -l -t \`date +%s -d \"tomorrow \${times[0]}\"\`" | sudo tee -a $RC_LOCAL
+echo "at -f /home/$USER/closeAndShutdown.sh \${times[1]} today" | sudo tee -a $RC_LOCAL
 
 #Log to startup.log
 echo "rm -f $STARTUP_LOG"| sudo tee -a $RC_LOCAL
@@ -45,10 +47,7 @@ echo "touch $STARTUP_LOG"| sudo tee -a $RC_LOCAL
 echo "route -n >> $STARTUP_LOG"| sudo tee -a $RC_LOCAL
 echo "sudo rtcwake -m show >> $STARTUP_LOG"| sudo tee -a $RC_LOCAL
 echo "/home/$USER/checkShutdown.sh >> $STARTUP_LOG"| sudo tee -a $RC_LOCAL
-
 sudo chmod +x $RC_LOCAL
-
-#Run Conduite at startup
 
 
 

@@ -1,0 +1,16 @@
+#Load background
+~/.fehbg &
+
+#Remove possibility of sleeping
+xset s off 
+xset -dpms
+xset s noblank
+
+#Start dock
+xcompmgr &
+docky &
+
+#Launch Conduite Algorithmique
+sleep 5 && gnome-terminal -e "ConduiteAlgorithmique &" &
+
+

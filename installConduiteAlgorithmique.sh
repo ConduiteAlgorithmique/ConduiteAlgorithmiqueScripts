@@ -1,20 +1,41 @@
 #!/usr/bin/env bash
 
 
-SHORTCUT=~/Desktop/StartupShutdownSettings.desktop
-timefile=$PWD/startupShutdown
 
-#Todo make icon
+timefile=$PWD/startupShutdown
+cp $timefile ~/
+
+
+SHORTCUT=~/Desktop/StartupShutdownSettings.desktop
 touch ${SHORTCUT}
 cat > ${SHORTCUT} << EOL
 [Desktop Entry]
 Name=Computer On/Off times
-Exec=bash -c 'gedit ${timefile}'
+Exec=bash -c 'gedit ~/startupShutdown'
 Type=Application
 Terminal=false
 Icon=preferences-system
 EOL
 chmod u+x ${SHORTCUT}
+sudo chown nuc:nuc ${SHORTCUT}
+
+shutdownscript=$PWD/closeAndShutdown.sh
+chmod +x $shutdownscript
+cp $shutdownscript ~/
+SHORTCUT=~/Desktop/Shutdown.desktop	
+
+#Todo make icon
+touch ${SHORTCUT}
+cat > ${SHORTCUT} << EOL
+[Desktop Entry]
+Name=Shutdown
+Exec=bash -c '~/closeAndShutdown.sh'
+Type=Application
+Terminal=false
+Icon=/usr/share/icons/ubuntu-mono-light/actions/24/system-shutdown-panel-restart.svg
+EOL
+chmod u+x ${SHORTCUT}
+sudo chown nuc:nuc ${SHORTCUT}
 
 cd ../openFrameworks/apps/myApps/ConduiteAlgorithmique
 make
@@ -31,10 +52,10 @@ Name=Run Conduite Algorithmique
 Exec=bash -c 'ConduiteAlgorithmique;$SHELL'
 Type=Application
 Terminal=true
-Icon=utilities-terminal
+Icon=/usr/share/icons/Humanity/actions/48/player_play.svg
 EOL
 chmod u+x ${SHORTCUT}
-#cp $SHORTCUT ~/.config/autostart/
+sudo chown nuc:nuc ${SHORTCUT}
 
 SHORTCUT=~/Desktop/ConduiteAlgorithmique_Settings.desktop
 settingsfile=$PWD/bin/data/settings.json
@@ -49,8 +70,7 @@ Terminal=false
 Icon=preferences-system
 EOL
 chmod u+x ${SHORTCUT}
-
-
+sudo chown nuc:nuc ${SHORTCUT}
 
 
 

@@ -11,6 +11,7 @@ xcompmgr &
 docky &
 
 #Launch Conduite Algorithmique
-sleep 5 && gnome-terminal -e "ConduiteAlgorithmique &" &
-
+sleep 5 
+#gnome-terminal -e "ConduiteAlgorithmique &" &
+gtk-launch ConduiteAlgorithmique.desktop
 

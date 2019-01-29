@@ -10,6 +10,9 @@ touch $TMP_STARTUP
 echo "${USER} ALL= NOPASSWD: /usr/sbin/ifmetric"  | sudo tee -a  $TMP_STARTUP
 echo "${USER} ALL= NOPASSWD: /usr/sbin/rtcwake"  | sudo tee -a  $TMP_STARTUP
 echo "${USER} ALL= NOPASSWD: /sbin/shutdown"  | sudo tee -a  $TMP_STARTUP
+echo "${USER} ALL= NOPASSWD: /usr/bin/at"  | sudo tee -a  $TMP_STARTUP
+echo "${USER} ALL= NOPASSWD: /usr/bin/atq"  | sudo tee -a  $TMP_STARTUP
+echo "${USER} ALL= NOPASSWD: /usr/bin/atrm"  | sudo tee -a  $TMP_STARTUP
 
 sudo visudo -c -f $TMP_STARTUP
 VALID=$?
@@ -38,10 +41,11 @@ echo 'sudo ifmetric wlp6s0 50' | sudo tee -a $RC_LOCAL
 
 #Read times from settings file
 echo "mapfile -t times < $TIME_SETTINGS_FILE" | sudo tee -a $RC_LOCAL
-#echo "sudo rtcwake -m no -l -t \`date +%s -d \"tomorrow \${times[0]}\"\`" | sudo tee -a $RC_LOCAL
+echo "sudo rtcwake -m no -l -t \`date +%s -d \"tomorrow \${times[0]}\"\`" | sudo tee -a $RC_LOCAL
 echo "at -f /home/$USER/closeAndShutdown.sh \${times[1]} today" | sudo tee -a $RC_LOCAL
 
 #Log to startup.log
+echo "rm -rf ~/.conduite/supervise"| sudo tee -a $RC_LOCAL
 echo "rm -f $STARTUP_LOG"| sudo tee -a $RC_LOCAL
 echo "touch $STARTUP_LOG"| sudo tee -a $RC_LOCAL
 echo "route -n >> $STARTUP_LOG"| sudo tee -a $RC_LOCAL

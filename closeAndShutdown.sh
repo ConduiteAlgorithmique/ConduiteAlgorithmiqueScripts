@@ -1,3 +1,4 @@
 #!/bin/bash
-killall -9 Conduitealgorithmique
+svc -t -x ~/.conduite
+rm -rf ~/.conduite/supervise
 sleep 3 && sudo shutdown now

@@ -1,0 +1,12 @@
+
+
+#These would be the cron edits for startup and shutdown, unfortunately, it's impossible to start the monitor service from cront
+
+# Sleep computer from 18:00 to 9:00 (15 hours = 54000 seconds)
+#00 18 * * * sudo rtcwake -m freeze --seconds 54000
+
+#Launch the application at 9:30
+#30 09 * * * gtk-launch ConduiteAlgorithmique.desktop
+
+#Kill the application at 17:30
+30 17 * * * svc -t -x ~/home/nuc/.conduite
